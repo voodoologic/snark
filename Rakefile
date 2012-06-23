@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Snarkers::Application.load_tasks
+Snarker::Application.load_tasks
