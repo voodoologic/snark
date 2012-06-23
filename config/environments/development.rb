@@ -1,4 +1,4 @@
-Monkeys::Application.configure do
+Snarkers::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -37,7 +37,7 @@ Monkeys::Application.configure do
     :address              => "smtp.gmail.com",  
     :port                 => 587,  
     :domain               => "gmail.com",  
-    :user_name            => "41tests@gmail.com",  
+    :user_name            => ENV['test_account'],  
     :password             => ENV['test_pass'],  
     :authentication       => "plain"
     # :enable_starttls_auto => true # I don't have this, but it should work anyway 

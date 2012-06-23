@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: monkeys_development
+  database: snarkers_development
 
 test:
   host: localhost
-  database: monkeys_test
+  database: snarkers_test
 
 # set these environment variables on your prod server
 production:

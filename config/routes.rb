@@ -1,4 +1,4 @@
-Monkeys::Application.routes.draw do
+Snarkers::Application.routes.draw do
 
   devise_for :users
 
