@@ -1,4 +1,4 @@
-Snarkers::Application.routes.draw do
+Snarker::Application.routes.draw do
 
   devise_for :users
 
