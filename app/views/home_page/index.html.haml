@@ -29,17 +29,40 @@
           tweets:
         %ul{style: 'list-style-type: none', class: "draggable snark-tweets"}
           - for snark_tweet in snarktweets[:list] do 
-            %li.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px"}
+            %li.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
               %h3.pull-left
                 = snark_tweet
               -# .pull-right
                 = check_box_tag snarktweet
-.sidebar.pull-right.span2{style: "background: light-grey; height: 600px"}
+.sidebar.pull-right.span3{style: "background: light-grey; height: 600px"}
+
   %h3
     selected tweets:
-    
+  .tweet-catch{style: "background: salmon; height: 50%; display: block"}
+  %a.btn.btn-primary{data: {toggle: "modal"}, href: "#myModal", style: "width: 50px; vertical-align: bottom"}
+    submit
+#myModal.modal.hide
+  .modal-header
+    %h3
+      fucking shit
+  .modal-body
+    %ul{style: 'list-style-type: none'}
+      - for snark_tweet in shittalks[:list] do 
+        %li.span4{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
+          %p.pull-left.clear-left
+            = snark_tweet.sub "%_______%", "@target_SOB"
+  .modal-footer
+    .pull-left
+      %p.bold
+      are you ready to fuck some shit up????
+    %a{href: "#", class: "btn", data: {dismiss: "modal"}}
+      close
+    %a{href: "#", class: "btn btn-primary"}
+      Save changes
+  %button{data:{dismiss: "modal"}, class: "close" }
 
-
+%script{type: "text/javascript"}
+  $('#myModal').modal("show": false)
 %script{type: "text/javascript"}
   $('#snark_nav li a').click(function (e) {
   e.preventDefault();
