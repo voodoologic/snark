@@ -10,7 +10,11 @@
   -# = raise @friends.map{ |friend| [ friend[:name], friend[:id] ]}.inspect
   = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
   = text_field(user,{})
-%ul.nav.nav-tabs
+
+%ul#myTab.nav.nav-tabs
+  %li
+    %a{href: "#all", data: {toggle: "tab"} }
+      all
   %li
     %a{href: "#snark", data: {toggle: "tab"} }
       snark
@@ -20,14 +24,28 @@
   %li
     %a{href: "#rage", data: {toggle: "tab"} }
       rage
-.hero-unit
-  %h3
-    Select from these snarky tweets: 
-  %ul{style: 'list-style-type: none'}
-    - for shittalk in shittalks do 
-      %li
-        .span6{style: 'border: 1px red solid'}
-          %h3.pull-left
-            = shittalk
-          .pull-right
-            = check_box_tag shittalk, shittalk
+.tab-content
+  #snark.tab-pane.active
+    .hero-unit
+      %h3
+        Select from these snarky tweets: 
+      %ul{style: 'list-style-type: none'}
+        - for shittalk in shittalks do 
+          %li
+            .span6{style: 'border: 1px red solid'}
+              %h3.pull-left
+                = shittalk
+              .pull-right
+                = check_box_tag shittalk, shittalk
+
+  #hate.tab-pane
+    %p
+      woah
+  #rage.tab-pane
+    %p
+      lollercoaster
+%script{type: "text/javascript"}
+  $('#myTab a').click(function (e) {
+  e.preventDefault();
+  $(this).tab('show');
+  })
