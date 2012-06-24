@@ -1,16 +1,16 @@
 
-- user = {name: "trollcraft", id: 1, profile_image: "http://placekitten.com/50/50", friends: [{name: "@goodtimes", id: 2}, {name: "@youhateme", id: 3}, {name: "@trollface", id: 4}, {name: "@dualpenetration", id: 5}, {name: "@lolcraft", id: 6}]}
-- shittalks = {name: "snark", list: [ "%_______%, You are a bad person and you smell bad.", "%_______%, fuck you", "Where do you get off, %_______%?"]}
-- woamamma = {name: "woamamma" ,list: ["%_______%, gave me herpes.", "%_______%, is the reason why we went to iraq", "Please go fuck yourself, %_______%?"]}
+- user = {name: "trollcraft", id: 1, profile_image: "http://placekitten.com/50/50", friends: [{name: "@youhateme", id: 2}, {name: "@mrniceguy", id: 3}, {name: "@trollface", id: 4}, {name: "@dualpenetration", id: 5}, {name: "@lolcraft", id: 6}]}
+- shittalks = {name: "snark", list: [ "%_______%, You are a bad person and you smell bad.", "%_______%, I disdain you", "Where do you get off, %_______%?"]}
+- woahmamma = {name: "woahmamma" ,list: ["%_______%, gave me herpes.", "%_______%, is the reason why the U.S. went to iraq", "Please go fuck yourself, %_______%?"]}
 - hell = {name: "hell", list: [ "%_______%, hey shitbag, you make everyone around you dummer ", "%_______%, I follow you on twitter b/c I hate myself", "Please go fuck yourself, %_______%?"]}
 - sports = {name: "sports", list: [ "%_______%, I can't believe they pay you that much and you suck so bad", "%_______%, what's up with you last performance bro?", "Please go fuck yourself, %_______%?"]}
 - @friends = user[:friends]
-- @tabs = ["snark", "woamamma", "hell", "sports"]
-- @snarktweets_list = [shittalks, woamamma, hell, sports]
+- @tabs = ["snark", "woahmamma", "hell", "sports"]
+- @snarktweets_list = [shittalks, woahmamma, hell, sports]
 %h1
   Hi 
   %b.strong
-    = user[:name]
+    = user[:name].concat ","
   Who really annoyes you?? select from your friends list or enter manually.
   = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
   = text_field(user,{})
@@ -38,19 +38,26 @@
 
   %h3
     selected tweets:
-  .tweet-catch{style: "background: salmon; height: 50%; display: block"}
+  .tweet-catch.droppable{style: "background: #999999; border-radius: 15px; height: 50%; display: block; padding: 10px"}
+    %ul
+      %li.placeholder{style: "font-style: italic;"}
+        drag your tweets here.
   %a.btn.btn-primary{data: {toggle: "modal"}, href: "#myModal", style: "width: 50px; vertical-align: bottom"}
     submit
 #myModal.modal.hide
   .modal-header
     %h3
-      fucking shit
+      Trollercoaster initialization
   .modal-body
     %ul{style: 'list-style-type: none'}
       - for snark_tweet in shittalks[:list] do 
         %li.span4{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
           %p.pull-left.clear-left
             = snark_tweet.sub "%_______%", "@target_SOB"
+    %br{style: "clear: left"}
+    %p{style: "margin-left: 30px; margin-top: 30px"}
+      reply to every tweet from @target_SOB.
+      = check_box_tag default: true
   .modal-footer
     .pull-left
       %p.bold
@@ -58,7 +65,7 @@
     %a{href: "#", class: "btn", data: {dismiss: "modal"}}
       close
     %a{href: "#", class: "btn btn-primary"}
-      Save changes
+      Fuck that guy
   %button{data:{dismiss: "modal"}, class: "close" }
 
 %script{type: "text/javascript"}
