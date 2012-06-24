@@ -4,4 +4,8 @@ class HomePageController < ApplicationController
     
     @user = User.new
   end
+
+  def thank_you
+
+  end
 end
