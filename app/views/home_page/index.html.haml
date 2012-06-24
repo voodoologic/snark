@@ -1,1 +1,22 @@
 .h1 THIS IS THE HOMEPAGE
+
+- shittalks = [ "%_______%, You are a bad person and you smell bad.", "%_______%, fuck you", " %_______%, Where do you get off?"]
+- user = {name: "trollcraft", id: 1, profile_image: "http://placekitten.com/50/50", friends: [{name: "goodtimes", id: 2}, {name: "youhateme", id: 3}, {name: "trollface", id: 4}, {name: "dualpenetration", id: 5}, {name: "lolcraft", id: 6}]}
+- @friends = user[:friends]
+%h1
+  Hi 
+  = user[:name]
+  Who really annoyes you?? select from your friends list or enter manually.
+  -# = raise @friends.map{ |friend| [ friend[:name], friend[:id] ]}.inspect
+  = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
+  = text_field(user,{})
+.hero-unit
+  %h3
+    Select from these snarky tweets: 
+  %ul 
+    - for shittalk in shittalks do 
+      %li
+        %h2
+          = shittalk
+        %p 
+          =link_to "tweet this to %____%", root_path
