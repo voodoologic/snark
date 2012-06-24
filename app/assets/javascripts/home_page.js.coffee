@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ->
-  $(".snark-tweets li").draggable()
+  $(".snark-tweets li").draggable(revert: true)
   $("#tweet-catch").droppable(drop: (event, ui) -> 
 				$( this ).find( ".placeholder" ).remove();
 				$( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
