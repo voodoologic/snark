@@ -1,8 +1,13 @@
 .h1 THIS IS THE HOMEPAGE
 
-- shittalks = [ "%_______%, You are a bad person and you smell bad.", "%_______%, fuck you", "Where do you get off, %_______%?"]
+- shittalks = {name: "snark", list: [ "%_______%, You are a bad person and you smell bad.", "%_______%, fuck you", "Where do you get off, %_______%?"]}
+- woamamma = {name: "hell" ,list: ["%_______%, gave me herpes.", "%_______%, is the reason why we went to iraq", "Please go fuck yourself, %_______%?"]}
+- hell = {name: "hell", list: [ "%_______%, hey shitbag, you make everyone around you dummer ", "%_______%, I follow you on twitter b/c I hate myself", "Please go fuck yourself, %_______%?"]}
+- sports = {name: "sports", list: [ "%_______%, I can't believe they pay you that much and you suck so bad", "%_______%, what's up with you last performance bro?", "Please go fuck yourself, %_______%?"]}
 - user = {name: "trollcraft", id: 1, profile_image: "http://placekitten.com/50/50", friends: [{name: "@goodtimes", id: 2}, {name: "@youhateme", id: 3}, {name: "@trollface", id: 4}, {name: "@dualpenetration", id: 5}, {name: "@lolcraft", id: 6}]}
 - @friends = user[:friends]
+- @tabs = ["all", "snark", "hell", "sports"]
+- @snarktweets_list = [shittalks, woamamma, hell, sports]
 %h1
   Hi 
   = user[:name]
@@ -12,38 +17,26 @@
   = text_field(user,{})
 
 %ul#myTab.nav.nav-tabs
-  %li
-    %a{href: "#all", data: {toggle: "tab"} }
-      all
-  %li
-    %a{href: "#snark", data: {toggle: "tab"} }
-      snark
-  %li
-    %a{href: "#hate", data: {toggle: "tab"} }
-      hate
-  %li
-    %a{href: "#rage", data: {toggle: "tab"} }
-      rage
-.tab-content
-  #snark.tab-pane.active
-    .hero-unit
-      %h3
-        Select from these snarky tweets: 
-      %ul{style: 'list-style-type: none'}
-        - for shittalk in shittalks do 
-          %li
-            .span6{style: 'border: 1px red solid'}
-              %h3.pull-left
-                = shittalk
-              .pull-right
-                = check_box_tag shittalk, shittalk
+  - for tab in @tabs do
+    %li
+      %a{href: "##{tab}", data: {toggle: "tab"} }
+        = tab
 
-  #hate.tab-pane
-    %p
-      woah
-  #rage.tab-pane
-    %p
-      lollercoaster
+- @snarktweets_list.each_with_index do |snarktweets, index|
+  .tab-content
+    %div{id: "#{snarktweets[:name]}", class: "tab-pane #{"active" if index == 1}"}
+      .hero-unit
+        %h3
+          Select from these snarky tweets: 
+        %ul{style: 'list-style-type: none'}
+          - for snarktweet in snarktweets[:list] do 
+            %li
+              .span6{style: 'border: 1px red solid'}
+                %h3.pull-left
+                  = snarktweet
+                .pull-right
+                  = check_box_tag snarktweet, snarktweet
+
 %script{type: "text/javascript"}
   $('#myTab a').click(function (e) {
   e.preventDefault();
