@@ -2,10 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 # require "active_record/railtie"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "active_resource/railtie"
-require "sprockets/railtie"
+require "rails/all"
 # # require "rails/test_unit/railtie"
 
 if defined?(Bundler)
@@ -20,8 +17,8 @@ module Snarker
 
     # don't generate RSpec tests for views and helpers
     config.generators do |g|
-      g.view_specs false
-      g.helper_specs false
+      g.view_specs true
+      g.helper_specs true
       
     end
 

@@ -5,8 +5,9 @@ gem 'rails', '3.2.3'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-
-
+gem 'pg'
+gem 'pry'
+gem 'twitter'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -48,9 +49,7 @@ gem "haml", ">= 3.1.4"
 gem "haml-rails", ">= 0.3.4", :group => :development
 gem "bootstrap-sass", ">= 2.0.1"
 gem "bson_ext", ">= 1.6.2"
-gem "mongoid", ">= 2.4.9"
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
-gem "mongoid-rspec", ">= 1.4.4", :group => :test
 gem "factory_girl_rails", ">= 3.2.0", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
 gem "omniauth"
