@@ -2,7 +2,7 @@ class HomePageController < ApplicationController
   
   def index
     
-    @user = User.new
+    @user = current_user
   end
 
   def thank_you

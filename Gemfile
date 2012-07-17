@@ -52,4 +52,4 @@ gem "bson_ext", ">= 1.6.2"
 gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
 gem "factory_girl_rails", ">= 3.2.0", :group => [:development, :test]
 gem "email_spec", ">= 1.2.1", :group => :test
-gem "omniauth"
+gem "omniauth-twitter"
