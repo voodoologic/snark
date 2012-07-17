@@ -12,9 +12,18 @@
     Hi
     %b.strong
       = @user.nickname
-    Who really annoyes you?? select from your friends list or enter manually.
-    = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
-    = text_field(user,{})
+    Who really annoyes you??
+  %br
+  %label
+    select from twitter list:
+  = select "user", "id",drop_down(@list_names)
+  %br
+  %label
+    manual entry:
+  .input-prepend
+    %span.add-on
+      @
+    = text_field_tag("fart","glennbeck",{style: "margin: 0 0 0 -5px", class: "woop"})
 
 %ul#snark_nav.nav.nav-tabs
   - for tab in @tabs do
