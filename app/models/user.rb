@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     user = where(auth.slice(:provider, :uid)).first || create_from_omniauth(auth)
-    user.oauth_token =  auth["credentials"]["token"]
-    user.oauth_secret = auth["credentials"]["token"]
+    user.oauth_token =  auth["credentials"]["token"] 
+    user.oauth_secret = auth["credentials"]["token"] 
     user.save!
     user
   end
