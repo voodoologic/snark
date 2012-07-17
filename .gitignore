@@ -9,3 +9,4 @@ log/*.log
 *private*
 tmp/
 .sass-cache/
+config/application_config.yml
