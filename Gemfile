@@ -6,20 +6,26 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'pg'
-gem 'pry'
 gem 'twitter'
 gem 'activerecord-reputation-system', require: 'reputation_system'
+gem "devise", ">= 2.1.0.rc"
+gem "devise_invitable", ">= 1.0.1"
+gem "omniauth-twitter"
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
+  gem "haml-rails"
+  gem "bootstrap-sass", ">= 2.0.1"
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platform => :ruby
-
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development do 
+  gem 'pry'
 end
 
 gem 'jquery-rails'
@@ -38,20 +44,12 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+group :test do 
+  gem "cucumber-rails"
+  gem "rspec-rails"
+  gem "factory_girl_rails"
+  gem "capybara", ">= 1.1.2", :group => :test
+  gem "database_cleaner", ">= 0.7.2", :group => :test
+  gem "email_spec", ">= 1.2.1", :group => :test
+end
 
-gem "devise", ">= 2.1.0.rc"
-gem "devise_invitable", ">= 1.0.1"
-gem "cancan", ">= 1.6.7"
-gem "rolify", ">= 3.1.0"
-gem "cucumber-rails", ">= 1.3.0", :group => :test
-gem "capybara", ">= 1.1.2", :group => :test
-gem "database_cleaner", ">= 0.7.2", :group => :test
-gem "launchy", ">= 2.1.0", :group => :test
-gem "haml", ">= 3.1.4"
-gem "haml-rails", ">= 0.3.4", :group => :development
-gem "bootstrap-sass", ">= 2.0.1"
-gem "bson_ext", ">= 1.6.2"
-gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
-gem "factory_girl_rails", ">= 3.2.0", :group => [:development, :test]
-gem "email_spec", ">= 1.2.1", :group => :test
-gem "omniauth-twitter"
