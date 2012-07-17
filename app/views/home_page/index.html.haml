@@ -7,13 +7,14 @@
 - @friends = user[:friends]
 - @tabs = ["snark", "woahmamma", "hell", "sports"]
 - @snarktweets_list = [shittalks, woahmamma, hell, sports]
-%h1
-  Hi 
-  %b.strong
-    = user[:name].concat ","
-  Who really annoyes you?? select from your friends list or enter manually.
-  = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
-  = text_field(user,{})
+- if @user
+  %h1
+    Hi
+    %b.strong
+      = @user.nickname
+    Who really annoyes you?? select from your friends list or enter manually.
+    = select(user, "friend_id",  @friends.map{ |friend| [ friend[:name], friend[:id] ]}  )
+    = text_field(user,{})
 
 %ul#snark_nav.nav.nav-tabs
   - for tab in @tabs do
