@@ -45,11 +45,12 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 group :test do 
+  gem 'vcr'
+  gem 'fakeweb'
   gem "cucumber-rails"
   gem "rspec-rails"
   gem "factory_girl_rails"
-  gem "capybara", ">= 1.1.2", :group => :test
-  gem "database_cleaner", ">= 0.7.2", :group => :test
-  gem "email_spec", ">= 1.2.1", :group => :test
+  gem "capybara"
+  gem "database_cleaner"
 end
 
