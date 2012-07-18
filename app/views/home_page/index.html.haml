@@ -9,7 +9,7 @@
 - @snarktweets_list = [shittalks, woahmamma, hell, sports]
 - if @user
   %h1
-    Hi
+    Hi 
     %b.strong
       = @user.nickname
     Who really annoyes you??
@@ -28,11 +28,11 @@
 %ul#snark_nav.nav.nav-tabs
   - for tab in @tabs do
     %li
-      %a{href: "#" + "#{tab}", data: {toggle: "tab"} }
+      %a{href: "##{tab}", data: {toggle: "tab"} }
         = tab
 .meat.span8{style: "background: light-grey; display: block"}
-  - @snarktweets_list.each do |snarktweets|
-    .tab-content
+  .tab-content
+    - @snarktweets_list.each do |snarktweets|
       %div{id: "#{snarktweets[:name]}", class: "tab-pane"}
         %h3
           = snarktweets[:name]
@@ -81,11 +81,13 @@
 %script{type: "text/javascript"}
   $('#myModal').modal("show": false)
 %script{type: "text/javascript"}
-  $('#snark_nav li a').click(function (e) {
+  $('#snark_nav a').click(function (e) {
   e.preventDefault();
   $(this).tab('show');
   });
-  $('#snark_nav a:first').tab('show');
+%script{type: "text/javascript"}
+  $(".tab-content").tab
+  $('#snark_nav a:last').tab("show")
 %script{type: "text/javascript"}
   $('#tweet-catch').droppable({
   activeClass: "ui-state-default",
