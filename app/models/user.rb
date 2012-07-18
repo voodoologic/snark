@@ -7,13 +7,14 @@ class User < ActiveRecord::Base
 
   has_many :tweets
   # Setup accessible (or protected) attributes for your model
+
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:avatar_image, :nickname, :provider, :uid
   attr_reader :twitter
 
   def self.from_omniauth(auth)
     user = where(auth.slice(:provider, :uid)).first || create_from_omniauth(auth)
-    user.oauth_token  = auth["credentials"]["token"] 
-    user.oauth_secret = auth["credentials"]["secret"] 
+    user.oauth_token  = auth["credentials"]["token"]
+    user.oauth_secret = auth["credentials"]["secret"]
     user.save!
     user
   end
