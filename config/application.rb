@@ -15,11 +15,11 @@ end
 module Snarker
   class Application < Rails::Application
 
-    # don't generate RSpec tests for views and helpers
+    # Generate RSpec tests for views and helpers
     config.generators do |g|
+      g.test_framework :rspec
       g.view_specs true
       g.helper_specs true
-      
     end
 
     # Settings in config/environments/* take precedence over those specified here.
