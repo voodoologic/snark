@@ -2,6 +2,8 @@
 .bundle
 .idea
 .rvmrc
+.swn
+.swm
 db/*.sqlite3
 log/*.log
 *.log
