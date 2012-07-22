@@ -1,10 +1,10 @@
 class HomePageController < ApplicationController
 
-  
-
   def index
-    @user = current_user
+    @user    = current_user
+    @tweets = Tweet.all
     initiate_twitter_client
+    @categories = Category.all.map(&:name)
   end
 
   def thank_you
