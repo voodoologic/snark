@@ -1,11 +1,9 @@
 Snarker::Application.routes.draw do
 
   resources :user do
-    namespace :votes do 
-      match 'votes/tweet/:id' => 'votes#tweet', :as => :tweet, method: :post
-      match 'votes/user/:id' => 'votes#user', :as => :user, method: :post
-      match 'votes/hatorade/:id' => 'votes#hatorade', :as => :hatorade,  method: :post
-    end
+    match 'votes/:votable/:id' =>  "votes#create" 
+    # match 'user/:id' => 'votes#user',  :as => :user, method: :post
+    # match 'hatorade/:id' => 'votes#hatorade', :as => :hatorade,  method: :post
   end
 
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}

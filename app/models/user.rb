@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   has_many :tweets
   has_one :category
 
+  #voting 
+  has_many :evaluations, class_name: "RSEvaluation", as: :source
+  has_reputation :votes, source: {reputation: :votes, of: :hatorade}, aggregated_by: :sum
+
   # Setup accessible (or protected) attributes for your model
 
   attr_accessible :email, :password, :password_confirmation, :remember_me ,:avatar_image, :nickname, :provider, :uid

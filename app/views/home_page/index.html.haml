@@ -1,12 +1,4 @@
-
-- user = {name: "trollcraft", id: 1, profile_image: "http://placekitten.com/50/50", friends: [{name: "@youhateme", id: 2}, {name: "@mrniceguy", id: 3}, {name: "@trollface", id: 4}, {name: "@dualpenetration", id: 5}, {name: "@lolcraft", id: 6}]}
-- shittalks = {name: "snark", list: [ "%_______%, You are a bad person and you smell bad.", "%_______%, I disdain you", "Where do you get off, %_______%?"]}
-- woahmamma = {name: "woahmamma" ,list: ["%_______%, gave me herpes.", "%_______%, is the reason why the U.S. went to iraq", "Please go fuck yourself, %_______%?"]}
-- hell = {name: "hell", list: [ "%_______%, hey shitbag, you make everyone around you dummer ", "%_______%, I follow you on twitter b/c I hate myself", "Please go fuck yourself, %_______%?"]}
-- sports = {name: "sports", list: [ "%_______%, I can't believe they pay you that much and you suck so bad", "%_______%, what's up with you last performance bro?", "Please go fuck yourself, %_______%?"]}
-- @friends = user[:friends]
-- @tabs = ["snark", "woahmamma", "hell", "sports"]
-- @snarktweets_list = [shittalks, woahmamma, hell, sports]
+- @snarktweets_list = ["shittalks", "woahmamma", "hell", "sports"]
 - if @user
   %h1
     Hi 
@@ -26,24 +18,31 @@
     = text_field_tag("fart","glennbeck",{style: "margin: 0 0 0 -5px", class: "woop"})
 
 %ul#snark_nav.nav.nav-tabs
-  - for tab in @tabs do
+  - for tab in @categories do
     %li
       %a{href: "##{tab}", data: {toggle: "tab"} }
         = tab
 .meat.span8{style: "background: light-grey; display: block"}
   .tab-content
-    - @snarktweets_list.each do |snarktweets|
-      %div{id: "#{snarktweets[:name]}", class: "tab-pane"}
+    - @categories.each do |list|
+      %div{id: "#{list}", class: "tab-pane"}
         %h3
-          = snarktweets[:name]
+          = list
           tweets:
         %ul{style: 'list-style-type: none', class: "draggable snark-tweets"}
-          - for snark_tweet in snarktweets[:list] do 
-            %li.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
-              %h3.pull-left
-                = snark_tweet
-              -# .pull-right
-                = check_box_tag snarktweet
+          - for tweet in @tweets do 
+            - if tweet.category_name == list
+              %li.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
+                %h3.pull-left
+                  = tweet.message
+                .pull-right
+                  = link_to "tweet", "#"
+                  - if current_user
+                    |
+                    = link_to "vote up",  user_votes_for_tweet(current_user, tweet), remote: true, type: "up"
+                    |
+                    = link_to "vote down", user_votes_for_tweet(current_user, tweet), remote: true, type: "down"
+
 .sidebar.pull-right.span3{style: "background: light-grey; height: 600px"}
 
   %h3
@@ -60,10 +59,10 @@
       Trollercoaster initialization
   .modal-body
     %ul{style: 'list-style-type: none'}
-      - for snark_tweet in shittalks[:list] do 
+      - for snark_tweet in @tweets do
         %li.span4{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
           %p.pull-left.clear-left
-            = snark_tweet.sub "%_______%", "@target_SOB"
+            = snark_tweet.message.sub "%%", "@target_SOB"
     %br{style: "clear: left"}
     %p{style: "margin-left: 30px; margin-top: 30px"}
       reply to every tweet from @target_SOB.
@@ -74,8 +73,7 @@
       are you ready to fuck some shit up????
     %a{href: "#", class: "btn", data: {dismiss: "modal"}}
       close
-    %a{href: "thank_you", class: "btn btn-primary"}
-      Fuck that guy
+    =link_to "Fuck that guy", "#"
   %button{data:{dismiss: "modal"}, class: "close" }
 
 %script{type: "text/javascript"}
