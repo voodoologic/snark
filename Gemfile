@@ -11,6 +11,7 @@ gem 'activerecord-reputation-system', require: 'reputation_system'
 gem "devise", ">= 2.1.0.rc"
 gem "devise_invitable", ">= 1.0.1"
 gem "omniauth-twitter"
+gem 'gritter'
 
 # Gems used only for assets and not required
 # in production environments by default.

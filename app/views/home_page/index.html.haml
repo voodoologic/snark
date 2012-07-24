@@ -44,7 +44,7 @@
                     = link_to "vote down",  vote_tweets_path( type: "down", votable: "Tweet", votable_id: tweet) , method: "post",  remote: true
                     %p{style: "float: right, margin-left: 4px", data: {tweet_id: "#{tweet.id}"} }
                       %b
-                        votes:
+                        votes: 
                       %div{id: "tweet_#{tweet.id}", style: "float:left"}
                         = tweet.reputation_value_for(:votes).to_i
 
