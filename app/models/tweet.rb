@@ -7,4 +7,9 @@ class Tweet < ActiveRecord::Base
   def category_name
     category.name
   end
+
+  def rank
+    self.reputation_value_for(:votes).to_i
+  end
+
 end

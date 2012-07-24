@@ -1,13 +1,18 @@
 Snarker::Application.routes.draw do
 
-  resources :user do
-    match 'votes/:votable/:id' =>  "votes#create" 
-    # match 'user/:id' => 'votes#user',  :as => :user, method: :post
-    # match 'hatorade/:id' => 'votes#hatorade', :as => :hatorade,  method: :post
-  end
-
   devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
+  # votes controller for generic voting failure. 
+  resource :votes do 
+    post 'create'
+  end
+
+  # resource for voting for tweet
+  resource :tweets do 
+    member do 
+      post "vote"
+    end
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

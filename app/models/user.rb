@@ -37,4 +37,12 @@ class User < ActiveRecord::Base
     @twitter ||= Twitter::Client.new(oauth_token: oauth_token, oauth_token_secret: oauth_secret)
   end
 
+  def votes_for(params)
+    params[:votable].constantize.find(params[:votable_id]).add_evaluation(:votes, 1, self)
+  end
+
+  def votes_against(params)
+    params[:votable].constantize.find(params[:votable_id]).add_evaluation(:votes, -1, self)
+  end
+
 end

@@ -36,12 +36,17 @@
                 %h3.pull-left
                   = tweet.message
                 .pull-right
-                  = link_to "tweet", "#"
-                  - if current_user
+                  -if current_user
+                    = link_to "tweet", "#"
                     |
-                    = link_to "vote up",  user_votes_for_tweet(current_user, tweet), remote: true, type: "up"
+                    = link_to "vote up",  vote_tweets_path(type: 'up', votable: "Tweet" , votable_id: tweet ), method: "post",  remote: true
                     |
-                    = link_to "vote down", user_votes_for_tweet(current_user, tweet), remote: true, type: "down"
+                    = link_to "vote down",  vote_tweets_path( type: "down", votable: "Tweet", votable_id: tweet) , method: "post",  remote: true
+                    %p{style: "float: right, margin-left: 4px", data: {tweet_id: "#{tweet.id}"} }
+                      %b
+                        votes:
+                      %div{id: "tweet_#{tweet.id}", style: "float:left"}
+                        = tweet.reputation_value_for(:votes).to_i
 
 .sidebar.pull-right.span3{style: "background: light-grey; height: 600px"}
 
