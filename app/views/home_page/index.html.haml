@@ -15,7 +15,7 @@
   .input-prepend
     %span.add-on
       @
-    = text_field_tag("fart","glennbeck",{style: "margin: 0 0 0 -5px", class: "woop"})
+    = text_field_tag("target","glennbeck",{style: "margin: 0 0 0 -5px", id: "target"})
 
 %ul#snark_nav.nav.nav-tabs
   - for tab in @categories do
@@ -32,8 +32,8 @@
         %ul{style: 'list-style-type: none', class: "draggable snark-tweets"}
           - for tweet in @tweets do 
             - if tweet.category_name == list
-              %li.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
-                %h3.pull-left
+              %li.tweet.span6{style: "background: white; border: 1px solid #333;border-radius: 10px; margin: 3px; padding: 5px"}
+                %h3.pull-left.message
                   = tweet.message
                 .pull-right
                   = link_to "tweet", "#"
