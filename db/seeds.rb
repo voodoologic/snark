@@ -14,21 +14,22 @@ categories = Category.create!( [
                 {name: "snark"},
                 {name: "whoamamma"},
                 {name: "hell"},
-                {name: "sports"}
+                {name: "sports"},
+                {name: "#hatorade"}
               ])
  tweets = Tweet.create!( [
-            {message: "%%, You are a bad person and you smell bad."},
-            {message: "%%, I disdain you"},
-            {message: "%%, gave me herpes."},
-            {message: "Where do you get off, %%?"},
-            {message: "%%, is the reason why the U.S. went to iraq"},
-            {message: "Please go fuck yourself, %%?"},
-            {message: "%%, hey shitbag, You make everyone around you dumber."}, 
-            {message: "%%, I follow you on twitter b/c I hate myself"},
-            {message: "Please go fuck yourself, %%?"},
-            {message: "%%, I can't believe they pay you that much and you suck so bad"},
-            {message: "%%, what's up with you last performance bro?"},
-            {message: "Please go fuck yourself, %%?"}
+            {message: "@glennbeck, You are a bad person and you smell bad."},
+            {message: "@glennbeck, I disdain you"},
+            {message: "@glennbeck gave me herpes."},
+            {message: "Where do you get off, @glennbeck?"},
+            {message: "@glennbeck is the reason why the U.S. went to iraq"},
+            {message: "Please go fuck yourself, @glennbeck?"},
+            {message: "@glennbeck hey shitbag, You make everyone around you dumber."},
+            {message: "@glennbeck, I follow you on twitter b/c I hate myself"},
+            {message: "Please go fuck yourself, @glennbeck?"},
+            {message: "@glennbeck, I can't believe they pay you that much and you suck so bad"},
+            {message: "@glennbeck, what's up with you last performance bro?"},
+            {message: "Please go fuck yourself, @glennbeck?"}
           ])
 tweets.each_with_index do |tweet, index|
   category = Category.find((index+1) % categories.count + 1)

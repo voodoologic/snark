@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120726213637) do
+ActiveRecord::Schema.define(:version => 20120727045529) do
 
   create_table "categories", :force => true do |t|
     t.integer  "tweet_id"
@@ -78,14 +78,17 @@ ActiveRecord::Schema.define(:version => 20120726213637) do
   add_index "rs_reputations", ["target_id", "target_type"], :name => "index_rs_reputations_on_target_id_and_target_type"
 
   create_table "tweets", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "message"
     t.integer  "category_id"
     t.string   "source"
     t.integer  "tweet_id"
     t.string   "to_user"
     t.string   "details"
+    t.string   "sender_name"
+    t.integer  "sender_id"
+    t.string   "sender_avatar"
   end
 
   create_table "users", :force => true do |t|
