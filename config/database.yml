@@ -1,26 +1,29 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: snark_development
+  database: hatorade_development
   pool: 5
-  username: 
+  username: VoodooLogic
   password:
+  port: 5432
 
 test: &TEST
   adapter: postgresql
   encoding: utf8
-  database: snark_test
+  database: hatorade_test
   pool: 5
-  username: 
+  username: VoodooLogic
   password:
+  port: 5432
 
 production:
   adapter: postgresql
   encoding: utf8
-  database: snark_production
+  database: hatorade_production
   pool: 5
-  username: 
+  username: VoodooLogic
   password:
+  port: 5432
 
 cucumber:
   <<: *TEST
